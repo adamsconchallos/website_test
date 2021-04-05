@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Clase 4</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Adams Ceballos" />
+    <script src="clase-4_files/header-attrs/header-attrs.js"></script>
+    <link href="clase-4_files/remark-css/default.css" rel="stylesheet" />
+    <link href="clase-4_files/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="clase-4_files/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <link href="clase-4_files/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="clase-4_files/tile-view/tile-view.js"></script>
+    <link href="clase-4_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="clase-4_files/panelset/panelset.js"></script>
+    <script src="clase-4_files/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <link rel="stylesheet" href="my-css.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Clase 4
+## Información imperfecta
+### Adams Ceballos
+### 572XXX
+
+---
+
+exclude: true
+
+```r
+if (!require("pacman")) install.packages("pacman")
+```
+
+```
+## Loading required package: pacman
+```
+
+```r
+pacman::p_load(
+  tidyverse, tidylog, xaringanExtra, rlang, patchwork
+)
+options(htmltools.dir.version = FALSE)
+knitr::opts_hooks$set(fig.callout = function(options) {
+  if (options$fig.callout) {
+    options$echo &lt;- FALSE
+  }
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+  options
+})
+```
+
+
+```
+## Warning: 'xaringanExtra::style_panelset' is deprecated.
+## Use 'style_panelset_tabs' instead.
+## See help("Deprecated")
+```
+
+```
+## Warning in style_panelset_tabs(...): The arguments to `syle_panelset()` changed
+## in xaringanExtra 0.1.0. Please refer to the documentation to update your slides.
+```
+
+---
+
+# Estructura
+
+Qué pasa cuando el regulador tiene información imperfecta sobre:
+  - MACs?
+  - MDs?
+
+Hasta ahora hemos asumido información perfecta. Sabemos que es poco probable que sea así
+
+--
+
+Continuaremos asumiendo que las firmas conocen su propio MAC
+
+y que los reguladores observan las emisiones a nivel de cada firma
+
+---
+
+# Información imperfecta
+
+
+Cómo pensamos esto?
+
+--
+
+Es poco probable que las firmas le digan al regulador cuál es su MAC
+
+--
+
+Por lo que el regulador tratará de estimarla cuando diseñe la política
+
+--
+
+Naturalmente las estimaciones tienen errores
+
+---
+class: dark-slide
+background-image: url(clase-4_files/figure-html/seraverdad.jpg)
+background-size: contain
+
+
+---
+
+# Precio vs cantidad (Weitzman 1974)
+
+Partamos comparando impuesto a las emisiones y permisos transables
+
+--
+
+Comenzaremos tomando la función de daño como no conocida y MAC conocidos
+
+--
+
+Luego haremos lo contrario. MAC no conocido y MD conocido
+
+--
+
+Nos enfocaremos principalmente en la eficiencia y queremos entender cuál política entrega el más alto bienestar y por qué
+
+---
+
+# Incertidumbre en la función de daño
+
+- `\(D(E)\)` es la función de daño social
+--
+
+- `\(C(E)\)` es la abatimiento marginal agregado
+--
+
+- `\(E^*\)` es el nivél óptimo de polución
+  - Es definido por `\(-C'(E) = D'(E)\)`
+--
+  
+- Sea `\(\tilde{D}(E)\)` y `\(\tilde{C}(E)\)` la función de daño y costos de abatimiento estimadas
+
+--
+
+Primero supongamos que el regulador estima `\(-C'(E)\)` correctamente, pero subestima el daño marginal: `\(\tilde{D}'(E) &lt; D'(E) \,\, \forall E\)`
+
+---
+
+# Incertidumbre en la función de daño
+
+El regulador basa su política en las estimaciones `\(\tilde{D}'(E)\)`
+
+--
+
+Esto implica que establece:
+`$$-C'(E) = \tilde{D}'(E)$$`
+
+--
+
+Que es resuelta por algún `\(\tilde{E} &gt; E^*\)` porque subestima el daño marginal
+
+--
+
+Cuál es la pérdida de bienestar al enfocarse `\(\tilde{E}\)` en lugar de `\(E^*\)`?
+
+Depende la cuantía de la pérdida del instrumento de política?
+
+---
+
+# Incertidumbre en la función de daño
+
+Definamos la pérdida de bienestar (WL) como la diferencia en el costo social total en `\(\tilde{E}\)` vs el nivel eficiente `\(E^*\)`:
+`\begin{align}
+WL &amp;= [D(\tilde{E}) + C(\tilde{E})] - [D(E^*) + C(E^*)] \notag\\
+  &amp;= [D(\tilde{E}) -D(E^*)] + [ C(\tilde{E}) - C(E^*)]
+\end{align}`
+
+Esto es equivalente al área bajo la curva de daño marginal y de abatimiento entre los dos niveles de emisiones:
+`$$WL = \int_{E^*}^{\tilde{E}}D'(E) dE - \int_{E^*}^{\tilde{E}} - C'(E)dE$$`
+
+
+---
+
+# Incertidumbre en la función de daño con permisos
+
+
+.pull-left[
+
+
+![MD incierta con permisos](clase-4_files/figure-html/uncertain_damages_permit_nodwl-1.png)
+]
+
+.pull-right[
+
+Este es el caso
+
+Resolver para `\(\tilde{E}, E^*\)` y la pérdida de bienestar por fijar el número de permisos en `\(L = \tilde{E}\)`
+
+]
+
+---
+
+# Incertidumbre en la función de daño con permisos
+
+
+.pull-left[
+
+
+![MD incierta con permisos](clase-4_files/figure-html/uncertain_damages_permit-1.png)
+]
+
+.pull-right[
+
+Con un esquema de permisos el regulador fija el monto total de las emisiones en `\(\tilde{E}\)`
+
+Dado que subestima `\(D'\)`, permite a las firmas emitir mucho
+
+Incurre en una pérdida de bienestar `\(A\)` por emisiones donde el MD `\(&gt;\)` MAC
+
+]
+
+
+---
+
+# MD incierta con impuestos
+
+
+.pull-left[
+
+
+![MD incierta con impuestos](clase-4_files/figure-html/uncertain_damages_permit_nodwl_tax-1.png)
+]
+
+.pull-right[
+
+El caso
+
+resolver para `\(\tilde{E}, E^*\)` y `\(E(\tau)\)` que es la elección de la firma dado `\(\tau\)`, y la pérdida de bienestar de establecer el impuesto en `\(\tau(\tilde{E})\)` que alcanza `\(E=\tilde{E}\)` dado `\(-\tilde{C}'(E)\)`
+
+]
+
+---
+
+# MD incierta con impuestos
+
+
+.pull-left[
+
+
+![MD incierta con impuestos](clase-4_files/figure-html/uncertain_damages_tax-1.png)
+]
+
+.pull-right[
+
+El regulador establece el impuesto como función de las emisiones objetivo `\(\tau(\tilde{E})\)`
+
+dado que subestima `\(D'\)`, establece `\(\tau(\tilde{E})\)` muy bajo
+
+La firma escoge `\(E(\tau) = \tilde{E}\)`
+
+Incurre en una pérdida de bienestar `\(A\)` por emisiones donde el MD `\(&gt;\)` MAC
+
+
+
+]
+
+
+---
+
+# Incertidumbre en MD
+
+Qué aprendimos?
+
+--
+
+Con incertidumbre en MD el regulador establecerá un nivel de política incorrecto
+
+--
+
+Si subestima MD:
+--
+
+  - Establece el número de permisos muy alto
+  - Establece un impuesto muy bajo
+
+--
+
+Ambos llevan a la misma pérdida de bienestar por lo que ambas políticas tienen la misma eficiencia
+
+---
+
+# Costos de abatimiento bajo incertidumbre
+
+Suponga que el regulador estima correctamente `\(D'(E)\)` y subestima MAC: `\(-\tilde{C}'(E) &lt; -C'(E) \,\, \forall E\)`
+
+
+El regulador escoge la política basado en sus estimaciones `\(-\tilde{C}'(E)\)`
+
+--
+
+Esto implica que establece:
+`$$-\tilde{C}'(E) = D'(E)$$`
+Lo que es resuelto por algún `\(\tilde{E} &lt; E^*\)` porque subestima los costos marginales
+
+--
+
+Cuál es la pérdida de bienestar de tener por objetivo `\(\tilde{E}\)` en lugar de `\(E^*\)`?
+
+
+---
+
+# Función de costos de abatimiento incierta
+
+
+.pull-left[
+
+
+
+![MAC incierta quiebra la equivalencia entre impuestos y permisos](clase-4_files/figure-html/uncertain_abatement_nodwl-1.png)
+]
+
+.pull-right[
+
+Aquí el problema de la MAC incierta
+
+resolver para `\(\tilde{E}, E^*, \sigma(\tilde{E}),\)` y la perdida de bienestar de establecer un número de permisos igual a `\(L = \tilde{E}\)`
+
+resolver para `\(\tilde{E}, E^*,\)` y `\(E(\tau)\)` que es la elección de emisiones de la firma dado `\(\tau\)`, y la pérdida de eficiencia de establecer un impuesto `\(\tau(\tilde{E})\)`
+
+]
+
+
+
+---
+
+# Función de costos de abatimiento incierta
+
+
+.pull-left[
+
+
+
+![MAC incierta quiebra la equivalencia entre impuestos y permisos](clase-4_files/figure-html/uncertain_abatement-1.png)
+]
+
+.pull-right[
+
+Con permisos, el regulador emite `\(\tilde{E}\)` permisos que resulta en un precio por permiso de `\(\sigma(\tilde{E})\)` donde `\(\tilde{E}\)` intersecta la verdadera MAC
+
+Esto produce una pérdida de bienestar de `\(C\)`
+
+El comportamiento de la empresa fija el precio aunque la cantidad sea fijada por el regulador
+
+]
+
+
+---
+
+# Función de costos de abatimiento incierta
+
+
+.pull-left[
+![MAC incierta quiebra la equivalencia entre impuestos y permisos](clase-4_files/figure-html/uncertain_abatement-1.png)
+]
+
+.pull-right[
+
+Con impuesto, el regulador establece un precio `\(\tau(\tilde{E})\)` por unidad de emisiones, y la firma escoge la cantidad de emisiones donde `\(\tau(\tilde{E}) = -C'(E)\)` que causa un total de emisiones `\(E(\tau)\)`
+
+Esto produce una pérdida de bienestar de `\(B\)`
+
+El comportamiento de la firma establece la cantidad aún cuando el precio es fijado por el regulador
+
+]
+
+---
+
+# Función de costos de abatimiento incierta
+
+
+.pull-left[
+![MAC incierta quiebra la equivalencia entre impuestos y permisos](clase-4_files/figure-html/uncertain_abatement-1.png)
+]
+
+.pull-right[
+
+Dado `\(E(\tau) \neq \tilde{E}\)`, el costo de abatimiento incierto importa: Permisos transables e impuests nos dan un resultado de emisiones distinto
+
+Hay alguna diferencia sistemática entre las propiedades de eficiencia de los permisos e impuestos?
+
+]
+
+---
+
+# Función de costos de abatimiento incierta
+
+
+En general parece que la pérdida de bienestar que causan los impuestos es mayor y en otros casos es mayor con los permisos
+
+--
+
+Lo que haremos será tratar de entender las características de la MAC y MD que hacen que una política sea mejor que otra
+
+
+---
+
+# MD empinada vs plana
+
+
+
+![distribución inicial es importante para el reparto de costos y beneficios](clase-4_files/figure-html/prices_vs_quantities_nodwl-1.png)
+
+resolcamos para las DWLs de los permisos e impuestos donde la única diferencia es la inclinación es la curva de daño marginal
+
+
+---
+
+# MD empinada vs plana
+
+
+
+![distribución inicial es importante para el reparto de costos y beneficios](clase-4_files/figure-html/prices_vs_quantities-1.png)
+
+La diferencia entre los gráficos es la pendiente de DM y, por tanto, la política que el regulador establece
+
+La pérdida de bienestar por los impuestos viene dada por `\(A\)`, y por los permisos viene dada por `\(B\)`
+
+
+---
+
+# MD empinada vs plana
+
+
+![distribución inicial es importante para el reparto de costos y beneficios](clase-4_files/figure-html/prices_vs_quantities-1.png)
+
+.hi-red[Los permisos lo hacen mejor con una MD empinada, los impuestos lo hacen mejor con una MD plana!]
+
+por qué?
+
+---
+
+# MD empinada vs plana
+
+Con una MD empinada (y conocida):
+--
+
+- La diferencia entre `\(E^*\)` y `\(\tilde{E}\)` es restringida: curvas empinadas son más inelásticas, errores en estimar MAC conduce a pequeños errores en `\(\tilde{E}-E^*\)`
+- La diferencia entre `\(E^*\)` y `\(E(\tau)\)` puede ser muy grande: errores en estimar la MAC conduce a errores grandes en `\(\tau(\tilde{E}) - \tau(E^*)\)` porque MD es muy empinada
+
+
+---
+
+# MD empinada vs plana
+
+Con una MD plana (y conocida):
+--
+
+- La diferencia entre `\(E^*\)` y `\(\tilde{E}\)` puede ser muy grande: Curvas más planas son más elásticas, errores en la estimación de la MAC pueden llevar a grandes errores en `\(\tilde{E}-E^*\)`
+- La diferencia entre `\(E^*\)` y  `\(E(\tau)\)` es restringida: errores en estimar la MAC puede llevar a errores pequeños en `\(\tau(\tilde{E}) - \tau(E^*)\)` porque MD es muy plna 
+
+&lt;!-- --- --&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "191:100"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
