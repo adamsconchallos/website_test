@@ -32,3 +32,7 @@ oplot <- ggplot(Orange, aes(x = age,
   theme_bw()
 oplot
 ```
+
+```{r}
+knitr::include_url('\clase-4.html')
+```
