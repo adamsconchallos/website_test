@@ -34,5 +34,5 @@ oplot
 ```
 
 ```{r}
-knitr::include_url('\clase-4.html')
+knitr::include_url('clase-4.html')
 ```
