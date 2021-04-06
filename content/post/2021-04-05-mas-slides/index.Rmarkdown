@@ -19,12 +19,14 @@ projects: []
 
 # Parece que estoy cachando
 
+Parece qie no
+
 ![yey](yey.gif)
 
 
 
 ```{r embed-xaringan, echo=T}
-xaringanExtra::embed_xaringan("/post/mas-slides/preferencias_utilidad.html", "4:3")
+xaringanExtra::embed_xaringan("/static/diapositivas/preferencias_utilidad.html", "4:3")
 ```
 
 

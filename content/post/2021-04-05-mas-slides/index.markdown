@@ -21,14 +21,16 @@ projects: []
 
 # Parece que estoy cachando
 
+Parece qie no
+
 ![yey](yey.gif)
 
 ``` r
-xaringanExtra::embed_xaringan("/post/mas-slides/preferencias_utilidad.html", "4:3")
+xaringanExtra::embed_xaringan("/static/diapositivas/preferencias_utilidad.html", "4:3")
 ```
 
 <div class="shareagain" style="min-width:300px;margin:1em auto;">
-<iframe src="/post/mas-slides/preferencias_utilidad.html" width="400" height="300" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
+<iframe src="/static/diapositivas/preferencias_utilidad.html" width="400" height="300" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
 <script>fitvids('.shareagain', {players: 'iframe'});</script>
 </div>
 

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Preferencias y Utilidad</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Adams Ceballos" />
+    <script src="preferencias_utilidad_files/header-attrs/header-attrs.js"></script>
+    <link href="preferencias_utilidad_files/remark-css/default.css" rel="stylesheet" />
+    <link href="preferencias_utilidad_files/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="preferencias_utilidad_files/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <link href="preferencias_utilidad_files/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="preferencias_utilidad_files/tile-view/tile-view.js"></script>
+    <link href="preferencias_utilidad_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="preferencias_utilidad_files/panelset/panelset.js"></script>
+    <script src="preferencias_utilidad_files/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <script src="preferencias_utilidad_files/clipboard/clipboard.min.js"></script>
+    <link href="preferencias_utilidad_files/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="preferencias_utilidad_files/shareon/shareon.min.js"></script>
+    <link href="preferencias_utilidad_files/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="preferencias_utilidad_files/xaringanExtra-shareagain/shareagain.js"></script>
+    <link rel="stylesheet" href="my-css.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Preferencias y Utilidad
+## Clase 1
+### Adams Ceballos
+### EC1010C
+
+---
+
+exclude: true
+
+```r
+if (!require("pacman")) install.packages("pacman")
+```
+
+```
+## Loading required package: pacman
+```
+
+```r
+pacman::p_load(
+  tidyverse, tidylog, xaringanExtra, rlang, patchwork
+)
+options(htmltools.dir.version = FALSE)
+knitr::opts_hooks$set(fig.callout = function(options) {
+  if (options$fig.callout) {
+    options$echo &lt;- FALSE
+  }
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+  options
+})
+```
+
+
+```
+## Warning: 'xaringanExtra::style_panelset' is deprecated.
+## Use 'style_panelset_tabs' instead.
+## See help("Deprecated")
+```
+
+```
+## Warning in style_panelset_tabs(...): The arguments to `syle_panelset()` changed
+## in xaringanExtra 0.1.0. Please refer to the documentation to update your slides.
+```
+
+
+---
+
+# Axiomas de la elección racional
+
+--
+
+## Completitud
+
+--
+
+Si `\(A\)` y `\(B\)` son dos situaciones, una persona siempre será capáz de especificar una de las siguientes situaciones
+
+--
+
+- `\(A\)` es preferido ( `\(\succ\)` ) a `\(B\)`
+
+--
+
+- `\(B\)` es preferido ( `\(\succ\)` ) a `\(A\)`
+
+--
+
+- `\(A\)` y `\(B\)` son igualmente atractivos ( `\(\sim\)` )
+
+---
+
+# Axiomas de la elección racional
+
+--
+
+## Transitividad
+
+--
+
+- Si `\(A \succ B\)` y `\(B \succ C\)`, entonces `\(A \succ C\)`
+
+--
+
+
+- Asume que las elecciones de la persona son internamente consistentes
+
+---
+
+# Axiomas de la elección racional
+
+## Continuidad
+
+- Si `\(A\)` es preferido a `\(B\)`, entonces situaciones muy cercanas a `\(A\)` también deben ser preferidas a "B"
+
+--
+
+- Se usa para analizar respuestas a cambios relativamente pequeñlos en el ingreso y precios
+
+---
+
+# Utilidad
+
+Dados estos supuestos, es posible mostrar que las personas son capaces de ordenar todas las situaciones posibles desde la menos deseada a la más deseada
+
+--
+
+Los economistas llaman a este ranking **Utilidad**
+
+- Si `\(A \succ B\)`, entonces la utilidad asignada a `\(A\)` excede a la utilidad asignada a `\(B\)`
+
+--
+
+$$
+U(A) &gt; U(B)
+$$
+---
+
+# Utilidad
+
+Los ranking de utilidad son ordinales por naturaleza
+
+--
+
+- registran la deseabilidad relativa de cestas de consumo
+
+--
+
+Dado que las medidas de utilidad no son únicas, no tiene sentido considerar cuánta más utilidad se obtiene de `\(A\)` que de `\(B\)`
+
+--
+
+También, es imposible comparar utilidades entre personas
+
+---
+
+# Utilidad
+
+La utilidad es afectada por el consumo de productos físicos, actitudes sicológicas, presiones grupales, experiencias personales, y el ambiente cultural general
+
+--
+
+Los economistas, generalmente, ponen atención a opciones cuantificables mientras mantienen constante todas las otras cosas que afectan a la utilidad
+
+--
+
+- Supuesto **ceteris paribus**
+
+---
+
+# Utilidad
+
+Supongamos que una persona debe escoger entre bienes de consumo `\(x_1,x_2,\dots,x_n\)`
+
+--
+
+El ranking que el individuo haga  puede mostrarse a través de una función de utilidad de la forma:
+
+--
+
+$$
+\text{Utilidad} = U(x_1,x_2,\dots,x_n; \text{Otras cosas})
+$$
+
+--
+
+La función es única hasta una transformación que conserve el orden
+
+---
+
+# Bienes económicos
+
+.pull-left[
+En la función de utilidad se asume que las `\(x's\)` son .hi-blue[bienes]
+
+- .hi-red[más es preferido a menos]
+]
+
+.pull-right[
+![más es mejor](preferencias_utilidad_files/mas_mejor.png)
+
+]
+
+---
+
+# Curvas de indiferencia
+
+Una **curva de indiferencia** muestra el set de cestas de consumo entre las cuales la persona es indiferente
+
+.pull-left[
+las combinaciones `\((x_1, y_1)\)` y `\((x_2, y_2)\)` otorgan el mismo nive de utilidad
+]
+
+.pull-right[
+&lt;!-- &lt;img src="preferencias_utilidad_files/indiferencia.png" style="width: 1000%" /&gt; --&gt;
+![Curva de indiferencia](preferencias_utilidad_files/indiferencia.png)
+]
+
+---
+
+# Tasa Marginal de sustitución
+
+La pendiente negativa de la curva de indiferencia se llama .hi-blu[tasa marginal de sustitución] (TMS)
+
+--
+
+.pull-left[
+  
+  &amp;nbsp;
+  &amp;nbsp;
+  
+.center[
+$$
+TMS = -\frac{dy}{dx}\biggr\rvert_{U=U_1}
+$$
+]
+]
+
+.pull-right[
+
+![Curva de indiferencia](preferencias_utilidad_files/indiferencia.png)
+
+]
+
+---
+
+# Tasa Marginal de sustitución
+
+La TMS cambia a medida que `\(x\)` y `\(y\)` cambian
+
+--
+
+- refleja la disposición de la persona a cambiar `\(y\)` por `\(x\)`
+
+
+![Curva de indiferencia](preferencias_utilidad_files/CI_TMS.png)
+
+---
+
+# Mapa de Curvas de indiferencia
+
+Cada punto debe tener una curva de indiferencia que pase por él
+
+
+
+$$
+U_1 &lt; U_2 &lt; U_3
+$$
+.center[
+&lt;img src="preferencias_utilidad_files/CI_mapa.png" style="width: 70%" /&gt;
+]
+&lt;!-- ![Curva de indiferencia](preferencias_utilidad_files/CI_mapa.png) --&gt;
+
+
+---
+# Mapa de curvas de indiferencia
+
+.center[
+&lt;img src="preferencias_utilidad_files/ci_ejemplo.png" style="width: 80%" /&gt;
+]
+---
+
+# Transitividad
+
+Pueden dos curvas de indiferencia de una persona intersectarse?
+
+
+&lt;img src="preferencias_utilidad_files/CI_intersec.png" style="width: 60%" /&gt;
+
+
+???
+
+el Individup es indifferente entre A y C. El individuo es indiferente entre B y C, la transitividad sugiere que el individuo debe ser indiferente entre A y B, pero B es preferido a A porque B contiene más de x e y que A
+
+---
+# Convexidad
+
+Un set de puntos es convexo si cualquiera dos puntos pueden ser unidos por una línea recta que esté contenida, completamente, en el set. 
+
+.center[
+&lt;img src="preferencias_utilidad_files/convexidad.png" style="width: 90%" /&gt;
+]
+
+---
+# Convexidad
+
+Si la curva de indiferencia es convexa, entonces la combinación `\((x_1+x_2)/2, (y_1+y_2)/2\)` es preferida a `\((x_1,y_1)\)` o `\((x_2,y_2)\)`.
+
+--
+
+.pull-left[
+Esto implica que las cestas **bien balanceadas** son preferidas a las cestas que están muy cargadas hacia uno de los bienes
+]
+--
+.pull-right[
+.center[
+&lt;img src="preferencias_utilidad_files/convex_balance.png" style="width: 190%" /&gt;
+]
+]
+
+---
+# Ilustrando distintos tipos de preferencias
+
+- En a) el bien en el eje Y (moledor de tabaco) es inútil. El consumidor sólo obtiene utilidad de consumir más del bien en el eje X (comida)
+
+--
+
+- En b) el bien del eje Y es un mal (moscas). El consumidor sólo obtiene más utilidad de consumir menos del mal
+
+--
+
+- En c) los bienes son perfectos sustitutos. El consumidor los ve de la misma forma
+  - En el ejemplo la TMS = 1
+  
+--
+
+- En d) los bienes son perfectos complementos. Deben ser usados en conjunto para obtener utilidad.
+
+---
+# Ilustrando distintos tipos de preferencias
+
+.center[
+&lt;img src="preferencias_utilidad_files/preferencias_tipos.png" style="width: 60%" /&gt;
+]
+
+---
+# La utilidad y la TMS
+
+Supongamos que una persona tiene preferencias por hamburguesas `\((y)\)` y bebidas `\((x)\)` que pueden ser representadas por:
+
+$$
+\text{Utilidad} = 10 = \sqrt{x\cdot y}
+$$
+
+--
+
+Si resolvemos para `\(y\)` tenemos
+
+$$
+y = \frac{100}{x}
+$$
+
+--
+
+Sabemos que la `\(TMS = -dy/dx\)`
+
+$$
+TMS = -dy/dx = 100/x^2
+$$
+
+---
+# La utilidad y la TMS
+
+$$
+TMS = -dy/dx = 100/x^2
+$$
+
+Notar que cuando `\(x\)` se incrementa, TMS cae
+
+- Cuando `\(x=5\)`, `\(TMS = 4\)`
+  - está dispuesto/a a dar 4 hamburguesas por 1 bebida
+- Cuando `\(x=20\)`, `\(TMS = 0.25\)`
+  - Ahora está dispuesto/a a dar un cuarto de hambuerguesa por 1 bebida
+  
+---
+# La utilidad marginal
+
+Supongamos que un individuo tiene una función de utilidad de la forma
+
+$$
+\text{utilidad} = U(x,y)
+$$
+--
+
+El diferencial total de `\(U\)` es:
+
+$$
+dU = \frac{\partial U}{\partial x}dx+\frac{\partial U}{\partial y}dy
+$$
+
+--
+
+A lo largo de cualquier curva de indiferencia la utilidad es constante: `\(dU=0\)`
+
+---
+# La utilidad marginal
+
+Por lo que tenemos
+
+--
+
+$$
+TMS = -\frac{dy}{dx}\biggr\rvert_{U=\text{cte}}=\frac{\partial U \over \partial x}{\partial U \over \partial y}
+$$
+
+--
+
+La TMS es el ratio entre la utilidad marginal de `\(x\)` y la utilidad marginal de `\(y\)`
+
+---
+# La TMS
+
+Podemos pensar la TMS como la tasa a la que una persona está dispuesta a reducir el consumo de un bien cuando obtiene una unidad más de otro bien. 
+
+--
+
+.center[
+&lt;img src="preferencias_utilidad_files/tms_ejemplo.png" style="width: 60%" /&gt;
+]
+
+---
+
+# La TMS y la Utilidad marginal decreciente
+
+Intuitivamente, pareciera que el supuesto de utilidad marginal decreciente está relacionado con el concepto de TMS decreciente
+- TMS decreciente requere que la función de utilidad sea cuasi-concava
+  - esto es independiente de como se mida la utilidad
+- Utilidad marginal decreciente depende de cómo la utilidad es medida
+
+Por lo tanto, estos dos conceptos son diferentes.  
+
+&lt;!-- hasta aqui micro 1. Desde aqui hacia abajo, micro 2 --&gt;
+---
+# Convexidad de las curvas de indiferencia
+
+Supongamos que la función de utilidad es
+$$
+\text{utilidad}=\sqrt{x\cdot y}
+$$
+
+--
+
+podemos simplificar el álgebra al tomar logaritmos
+
+$$
+U^*(x,y)=\ln(U(x,y))=0.5\ln x+0.5\ln y
+$$
+
+--
+
+Así,
+
+
+$$
+TMS = \frac{\partial U^* \over \partial x}{\partial U^* \over \partial y}=\frac{0.5\over x}{0.5\over y}=\frac{y}{x}
+$$
+
+---
+# Convexidad de las curvas de indiferencia
+
+Si la función de utilidad fuese:
+
+$$
+U(x,y)=x+xy+y
+$$
+
+--
+
+No hay ventaja en transformar esta función, así que:
+
+$$
+TMS = \frac{\partial U \over \partial x}{\partial U \over \partial y}= \frac{1+y}{1+x}
+$$
+
+---
+# Ejemplo de funciones de utilidad
+
+## Cobb-Douglas
+
+$$
+U(x,y)=x^{\alpha}y^{\beta}
+$$
+
+--
+
+donde `\(\alpha\)` y `\(\beta\)` son constantes positivas
+- El valor relativo de `\(\alpha\)` y `\(\beta\)` indican la importancia relativa de los bienes
+
+---
+# Ejemplo de funciones de utilidad
+
+## Perfectos sustitutos
+
+$$
+U(x,y)=\alpha x+\beta y
+$$
+--
+
+.center[
+&lt;img src="preferencias_utilidad_files/perf_sust.png" style="width: 70%" /&gt;
+]
+
+---
+# Ejemplo de funciones de utilidad
+
+## Perfectos Complementos
+
+$$
+U(x,y)=\min{(\alpha x, \beta y)}
+$$
+
+.center[
+&lt;img src="preferencias_utilidad_files/perf_compl.png" style="width: 70%" /&gt;
+]
+
+---
+# Ejemplo de funciones de utilidad
+
+## Utilidad CES (constant elasticity of substitution)
+
+$$
+U(x,y)=(x^{\delta}+y^{\delta})^{\frac{1}{\delta}}
+$$
+
+--
+cuando `\(\delta \neq 0\)`
+
+$$
+U(x,y)= \ln{x}+\ln{y}
+$$
+--
+
+cuando `\(\delta =0\)`
+
+- Perfectos sustitutos `\(\rightarrow \delta=1\)`
+- Cobb-Douglas `\(\rightarrow \delta=0\)`
+- Perfectos complementos `\(\rightarrow \delta=-\infty\)`
+
+---
+# Preferencias homotéticas
+
+si la TMS depende sólo de la relación de las cantidades de los dos bienes, y no de las cantidades de los mismos, la función de utilidad es .hi-blue[homotética]
+
+- sustitutos perfectos `\(\rightarrow\)` TMS es la misma en cada punto
+- Complementos perfectos `\(\rightarrow\)` TMS `\(=\infty\)` si `\(y/x &gt; \alpha /\beta\)`. No definida si `\(y/x = \alpha /\beta\)`, y TMS `\(=0\)` si `\(y/x&lt;\alpha / \beta\)`
+
+---
+# Preferencias homotéticas
+
+Para la función Cobb-Douglas general, la TMS es:
+
+$$
+TMS=\frac{\partial U \over \partial x}{\partial U \over \partial y}=\frac{\alpha x^{\alpha-1}y^{\beta}}{\beta x^{\alpha}y^{\beta-1}} = \frac{\alpha}{\beta}\cdot \frac{y}{x}
+$$
+
+---
+# Preferencias no homotéticas
+
+Algunas funciones de utilidad no exhiben preferencias homotéticas
+
+--
+
+$$
+`\begin{align}
+U(x,y)=x+\ln{y} \\
+MRS =\frac{\partial U \over \partial x}{\partial U \over \partial y}=\frac{1}{1\over y}=y
+\end{align}`
+$$
+
+---
+# El caso de muchos bienes
+
+Supongamos una función de utilidad de `\(n\)` bienes dada por
+
+$$
+U(x,y)=U(x_1,x_2,\dots,x_n)
+$$
+
+--
+
+El diferencial total de `\(U\)` es
+
+$$
+dU=\frac{\partial U}{\partial x_1}dx_1+\frac{\partial U}{\partial x_2}dx_2+\dots +\frac{\partial U}{\partial x_n}dx_n
+$$
+--
+
+Podemos encontrar la TMS entre dos bienes haciendo `\(dU=0\)`
+
+$$
+dU=0=\frac{\partial U}{\partial x_i}dx_i+\frac{\partial U}{\partial x_j}dx_j
+$$
+---
+# El caso de muchos bienes
+
+Reordenando tenemos
+
+$$
+TMS(x_i \text{ por } x_j)=-\frac{dx_j}{dx_i}=\frac{\partial U \over \partial x_i}{\partial U \over \partial x_j}
+$$
+
+---
+# Algunos Puntos importantes:
+
+Si los individuos cumplen ciertos postulados de comportamiento, podrán clasificar todos las cestas de consumo
+
+--
+
+- la clasificación puede representarse mediante una función de utilidad
+- al tomar decisiones, los individuos actuarán como si estuvieran maximizando esta función
+
+--
+
+Las funciones de utilidad para dos bienes pueden ilustrarse mediante un mapa de curvas de indiferencia
+
+---
+# Algunos Puntos importantes:
+
+La pendiente negativa de las curvas de indiferencia mide la tasa marginal de sustitución (TMS)
+
+--
+
+- La tasa a la que una persona intercambia un monto de un bien `\((y)\)` por una unidad más de otro bien `\((x)\)`
+
+--
+
+La TMS decrece a medida que `\(x\)` es sustituida por `\(y\)`
+
+- Las personas prefieren algún balance en las elecciones de consumo
+
+---
+# Algunos Puntos importantes:
+
+Pocas formas funcionales pueden capturar diferencias importantes en las preferencias de una persona por dos o más bienes
+
+--
+
+- Cobb-Doublas
+- Función lineal (perfectos sustituos)
+- Proporciones fijas (perfectos complementos)
+- CES
+  - incluye a las tres anteriores como casos especiales
+
+---
+# Algunos Puntos importantes:
+
+Es sencillo generalizar los ejemplos de dos bienes a muchos bienes
+
+--
+
+- el estudio de las elecciones de las personas entre muchos bienes puede aportar muchas ideas
+
+--
+
+- la matemática de muchos bienes no es especialmente intuitiva, por lo que nos basaremos en casos de dos bienes para construir la intuición
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
