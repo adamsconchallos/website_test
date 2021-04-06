@@ -36,8 +36,5 @@ oplot
 
 ```{r xaringanExtra-share-again, echo=FALSE}
 xaringanExtra::use_share_again()
-xaringanExtra::embed_xaringan(
-  url = "/clase-4.html",
-  ratio = "16:9"
-)
+knitr::include_url('clase-4.html')
 ```

@@ -16,13 +16,11 @@ image:
   preview_only: no
 projects: []
 ---
-
 <script src="{{< blogdown/postref >}}index_files/clipboard/clipboard.min.js"></script>
 <link href="{{< blogdown/postref >}}index_files/shareon/shareon.min.css" rel="stylesheet" />
 <script src="{{< blogdown/postref >}}index_files/shareon/shareon.min.js"></script>
 <link href="{{< blogdown/postref >}}index_files/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
 <script src="{{< blogdown/postref >}}index_files/xaringanExtra-shareagain/shareagain.js"></script>
-<script src="{{< blogdown/postref >}}index_files/fitvids/fitvids.min.js"></script>
 
 # Quiero aprender a subir las diapositivas a mi sitio, pero no sé cómo hacerlo!
 
@@ -30,7 +28,5 @@ projects: []
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
-<div class="shareagain" style="min-width:300px;margin:1em auto;">
-<iframe src="/clase-4.html" width="1600" height="900" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
-<script>fitvids('.shareagain', {players: 'iframe'});</script>
-</div>
+
+<iframe src="clase-4.html" width="672" height="400px"></iframe>
