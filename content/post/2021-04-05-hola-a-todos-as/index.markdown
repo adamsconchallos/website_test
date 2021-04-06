@@ -31,4 +31,4 @@ projects: []
 
 <iframe src="/clase-4.html" width="672" height="400px"></iframe>
 
-[relative link in Markdown](/clase-4.html)
+![relative link in Markdown](/clase-4.html)
