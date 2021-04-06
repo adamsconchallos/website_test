@@ -26,12 +26,12 @@ projects: []
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
 ``` r
-xaringanExtra::embed_xaringan("/post/hola-a-todos-as/preferencias_utilidad.html", "4:3")
+xaringanExtra::embed_xaringan("/post/2021-04-05-hola-a-todos-as/preferencias_utilidad.html", "4:3")
 ```
 
 <div class="shareagain" style="min-width:300px;margin:1em auto;">
-<iframe src="/post/hola-a-todos-as/preferencias_utilidad.html" width="400" height="300" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
+<iframe src="/post/2021-04-05-hola-a-todos-as/preferencias_utilidad.html" width="400" height="300" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
 <script>fitvids('.shareagain', {players: 'iframe'});</script>
 </div>
 
-[relative link in Markdown](/post/hola-a-todos-as/preferencias_utilidad.html)
+[relative link in Markdown](/post/2021-04-05-hola-a-todos-as/preferencias_utilidad.html)
