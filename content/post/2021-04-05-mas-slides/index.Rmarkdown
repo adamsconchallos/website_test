@@ -30,6 +30,12 @@ xaringanExtra::embed_xaringan("/static/diapositivas/preferencias_utilidad.html",
 ```
 
 
+
+```{r, echo=T}
+knitr::include_url("/static/diapositivas/preferencias_utilidad.html")
+```
+
+
 ![relative link in Markdown](/post/mas-slides/preferencias_utilidad.html)
 
 

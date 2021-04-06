@@ -6,7 +6,7 @@ date: EC1010C
 output:
   xaringan::moon_reader:
     css: ['default', 'metropolis', 'metropolis-fonts', 'my-css.css']
-    self_contained: false
+    # self_contained: false
     nature:
       highlightStyle: github
       highlightLines: true

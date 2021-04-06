@@ -34,6 +34,13 @@ xaringanExtra::embed_xaringan("/static/diapositivas/preferencias_utilidad.html",
 <script>fitvids('.shareagain', {players: 'iframe'});</script>
 </div>
 
+``` r
+knitr::include_url("/static/diapositivas/preferencias_utilidad.html")
+```
+
+<iframe src="/static/diapositivas/preferencias_utilidad.html" width="672" height="400px">
+</iframe>
+
 ![relative link in Markdown](/post/mas-slides/preferencias_utilidad.html)
 
 [relative link in Markdown](/post/mas-slides/preferencias_utilidad.html)
