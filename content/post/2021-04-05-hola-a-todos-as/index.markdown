@@ -29,4 +29,4 @@ projects: []
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
 
-<iframe src="clase-4.html" width="672" height="400px"></iframe>
+<iframe src="/clase-4.html" width="672" height="400px"></iframe>
