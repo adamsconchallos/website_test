@@ -36,7 +36,12 @@ oplot
 
 ```{r xaringanExtra-share-again, echo=FALSE}
 xaringanExtra::use_share_again()
-knitr::include_url('/post/hola-a-todos-as/clase-4.html')
+
 ```
 
-![relative link in Markdown](/post/hola-a-todos-as/clase-4.html)
+
+```{r}
+knitr::include_url('/post/hola-a-todos-as/clase-4.html', height = "505px")
+```
+
+[relative link in Markdown](/post/hola-a-todos-as/clase-4.html)
