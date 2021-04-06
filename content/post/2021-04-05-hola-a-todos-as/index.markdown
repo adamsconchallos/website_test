@@ -16,11 +16,8 @@ image:
   preview_only: no
 projects: []
 ---
-<script src="{{< blogdown/postref >}}index_files/clipboard/clipboard.min.js"></script>
-<link href="{{< blogdown/postref >}}index_files/shareon/shareon.min.css" rel="stylesheet" />
-<script src="{{< blogdown/postref >}}index_files/shareon/shareon.min.js"></script>
-<link href="{{< blogdown/postref >}}index_files/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
-<script src="{{< blogdown/postref >}}index_files/xaringanExtra-shareagain/shareagain.js"></script>
+
+<script src="{{< blogdown/postref >}}index_files/fitvids/fitvids.min.js"></script>
 
 # Quiero aprender a subir las diapositivas a mi sitio, pero no sé cómo hacerlo!
 
@@ -28,15 +25,13 @@ projects: []
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
-
-
-
-
-
-```r
-knitr::include_url('/post/hola-a-todos-as/clase-4.html', height = "505px")
+``` r
+xaringanExtra::embed_xaringan("/post/hola-a-todos-as/preferencias_utilidad.html", "4:3")
 ```
 
-<iframe src="/post/hola-a-todos-as/clase-4.html" width="672" height="505px"></iframe>
+<div class="shareagain" style="min-width:300px;margin:1em auto;">
+<iframe src="/post/hola-a-todos-as/preferencias_utilidad.html" width="400" height="300" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
+<script>fitvids('.shareagain', {players: 'iframe'});</script>
+</div>
 
-[relative link in Markdown](/post/hola-a-todos-as/clase-4.html)
+[relative link in Markdown](/post/hola-a-todos-as/preferencias_utilidad.html)
