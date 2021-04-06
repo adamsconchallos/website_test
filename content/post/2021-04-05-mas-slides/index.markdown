@@ -26,21 +26,21 @@ Parece qie no
 ![yey](yey.gif)
 
 ``` r
-xaringanExtra::embed_xaringan("/static/diapositivas/preferencias_utilidad.html", "4:3")
+xaringanExtra::embed_xaringan("/static/diapositivas/index.html", "4:3")
 ```
 
 <div class="shareagain" style="min-width:300px;margin:1em auto;">
-<iframe src="/static/diapositivas/preferencias_utilidad.html" width="400" height="300" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
+<iframe src="/static/diapositivas/index.html" width="400" height="300" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
 <script>fitvids('.shareagain', {players: 'iframe'});</script>
 </div>
 
 ``` r
-knitr::include_url("/static/diapositivas/preferencias_utilidad.html")
+knitr::include_url("/static/diapositivas/index.html")
 ```
 
-<iframe src="/static/diapositivas/preferencias_utilidad.html" width="672" height="400px">
+<iframe src="/static/diapositivas/index.html" width="672" height="400px">
 </iframe>
 
-![relative link in Markdown](/post/mas-slides/preferencias_utilidad.html)
+![relative link in Markdown](/static/diapositivas/index.html)
 
 [relative link in Markdown](/post/mas-slides/preferencias_utilidad.html)

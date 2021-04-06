@@ -26,17 +26,17 @@ Parece qie no
 
 
 ```{r embed-xaringan, echo=T}
-xaringanExtra::embed_xaringan("/static/diapositivas/preferencias_utilidad.html", "4:3")
+xaringanExtra::embed_xaringan("/static/diapositivas/index.html", "4:3")
 ```
 
 
 
 ```{r, echo=T}
-knitr::include_url("/static/diapositivas/preferencias_utilidad.html")
+knitr::include_url("/static/diapositivas/index.html")
 ```
 
 
-![relative link in Markdown](/post/mas-slides/preferencias_utilidad.html)
+![relative link in Markdown](/static/diapositivas/index.html)
 
 
 [relative link in Markdown](/post/mas-slides/preferencias_utilidad.html)
