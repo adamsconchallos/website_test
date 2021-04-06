@@ -38,3 +38,5 @@ oplot
 xaringanExtra::use_share_again()
 knitr::include_url('/clase-4.html')
 ```
+
+[relative link in Markdown](/clase-4.html)
