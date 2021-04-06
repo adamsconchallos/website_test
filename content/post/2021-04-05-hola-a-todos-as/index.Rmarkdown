@@ -37,8 +37,13 @@ oplot
 
 
 
-```{r}
-xaringanExtra::embed_xaringan("/post/2021-04-05-hola-a-todos-as/preferencias_utilidad.html", "4:3")
+
+
+
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan("/post/hola-a-todos-as/preferencias_utilidad.html", "4:3")
 ```
+
 
 [relative link in Markdown](/post/2021-04-05-hola-a-todos-as/preferencias_utilidad.html)
